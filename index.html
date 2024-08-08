@@ -17,7 +17,7 @@
     await ndef.scan();
      alert("> Scan started");
 
-    ndef.addEventListener("readingerror", ({error}) => {
+    ndef.addEventListener("readingerror", (error) => {
       alert("Argh! Cannot read data from the NFC tag. Try another one?");
          alert(`> Error : ${error}`);
     });
