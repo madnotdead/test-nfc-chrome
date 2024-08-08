@@ -10,7 +10,7 @@
     <title>Escaneo NFC</title>
     <script>
         async function startNFC() {
-           log("User clicked scan button");
+           console.log("User clicked scan button");
 
   try {
     const ndef = new NDEFReader();
@@ -18,15 +18,15 @@
     log("> Scan started");
 
     ndef.addEventListener("readingerror", () => {
-      log("Argh! Cannot read data from the NFC tag. Try another one?");
+      alert("Argh! Cannot read data from the NFC tag. Try another one?");
     });
 
     ndef.addEventListener("reading", ({ message, serialNumber }) => {
-      log(`> Serial Number: ${serialNumber}`);
-      log(`> Records: (${message.records.length})`);
+     alert(`> Serial Number: ${serialNumber}`);
+     alert(`> Records: (${message.records.length})`);
     });
   } catch (error) {
-    log("Argh! " + error);
+    alert("Argh! " + error);
   }
         }
     </script>
