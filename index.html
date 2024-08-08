@@ -4,22 +4,28 @@
 <title>Page Title</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="stylesheet" href="">
-<style>
-</style>
-<body>
-
-<div class="">
- <h1>This is a Heading</h1>
- <p>This is a paragraph.</p>
- <p>This is another paragraph.</p>
-</div>
-<script>
-   
-    if (!("NDEFReader" in window))
-        alert("Web NFC is not available. Use Chrome on Android.");
-    else 
-        alert("Web NFC present")
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escaneo NFC</title>
+    <script>
+        async function startNFC() {
+            try {
+                const ndef = new NDEFReader();
+                await ndef.scan();
+                ndef.onreading = event => {
+                    const { serialNumber, message } = event;
+                    alert(`Número de serie: ${serialNumber}`);
+                };
+                alert('Escaneo NFC iniciado');
+            } catch (error) {
+                alert(`Error: ${error}`);
+            }
+        }
     </script>
-    
+</head>
+<body>
+    <button onclick="startNFC()">Escanear NFC</button>
+    <button onclick="startNFC()">Otro botón para NFC</button>
 </body>
 </html>
