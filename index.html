@@ -19,7 +19,8 @@
 
     ndef.addEventListener("readingerror", (error) => {
       alert("Argh! Cannot read data from the NFC tag. Try another one?");
-         alert(`> Error : `, error);
+        alert(`> Error : `, error);
+        console.log(error);
     });
 
     ndef.addEventListener("reading", ({ message, serialNumber }) => {
